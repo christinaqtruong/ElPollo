@@ -23,10 +23,7 @@ connection.connect(function(err) {
   
   //list items
   itemsForSale();
-  console.log('Connection established!')
-  
-//   // run the start function after the connection is made to prompt the user
-//   start();
+ 
 });
 
 //function that shows table items with prices and IDs
@@ -46,10 +43,11 @@ function itemsForSale() {
 }
 
 // function for user to purchase items
+function purchase() {
   inquirer
     .prompt([
       {
-        name: "buyItem",
+        name: "itemID",
         type: "input",
         message: "What is the ID of the item that you would like to purchase?"
       },
@@ -57,38 +55,36 @@ function itemsForSale() {
         name: "quantity",
         type: "input",
         message: "How many would you like to buy?"
-      },
-      {
-        name: "startingBid",
-        type: "input",
-        message: "What would you like your starting bid to be?",
-        validate: function(value) {
-          if (isNaN(value) === false) {
-            return true;
-          }
-          return false;
-        }
       }
     ])
     .then(function(answer) {
-      // when finished prompting, insert a new item into the db with that info
+      // when finished prompting, check item inventory for item
       connection.query(
-        "INSERT INTO auctions SET ?",
-        {
-          item_name: answer.item,
-          category: answer.category,
-          starting_bid: answer.startingBid || 0,
-          highest_bid: answer.startingBid || 0
-        },
-        function(err) {
+        "SELECT stock_quantity FROM inventory WHERE item_id= " + answer.itemID,
+        function(err, result) {
           if (err) throw err;
-          console.log("Your auction was created successfully!");
-          // re-prompt the user for if they want to bid or post
-          start();
-        }
-      );
+          console.log(err);
+          var quantity = answer.quantity;
+          var itemID = answer.itemID;
+          if (quantity > result){
+              console.log("Oh no! Looks like we're fresh out of those. We'll try to get some more as soon as Bill's leg starts working again.");
+
+              connection.end();
+          } else {
+                    connection.query(
+                        "UPDATE inventory SET stock_quantity = stock_quantity - 1 WHERE item_ID = " + itemID,
+    
+                        function(error) {
+                            if (error) throw err;
+                            console.log("Inventory updated!");
+                        }
+                
+                    )
+                 }
+        });
     });
 }
+
 
 
 // // function which prompts the user for what action they should take
