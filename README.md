@@ -1,5 +1,5 @@
-# ElPollosHermanos
-Before Gus Fringe died, he opened up an online store from which customers could buy El Pollos Hermanos products on the net. 
+# Trashy Trinkets
+So you found yourself at the end of the world. What do you do? You shop at Trashy Trinkets! The post-apocalytic store that has all your needs!
 
 ## Overview
 This app is an Amazon-like storefront using MySQL and Inquirer from Node.js. The app takes orders from customers and depletes stock from the store's inventory. 
