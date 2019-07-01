@@ -65,28 +65,34 @@ function purchase() {
             console.log(result);
 
             if (err) throw err;
-            console.log(err);
+    
             var quantity = answer.quantity;
             var itemID = answer.itemID;
-            if (quantity > result){
-            console.log("Oh no! Looks like we're fresh out of those. We'll try to get some more as soon as Bill's leg starts working again.");
-
-              connection.end();
-          } else {
-                    connection.query(
-                        "UPDATE inventory SET stock_quantity = stock_quantity - 1 WHERE item_ID = " + itemID,
-    
-                        function(error) {
-                            if (error) throw err;
-                            console.log("Inventory updated!");
-                        }
-                
-                    )
-                 }
-        });
-    });
+            console.log(quantity);
+            console.log(itemID);
+            
+            if (quantity > itemID){
+              console.log("Oh no! Looks like we're fresh out of those. We'll try to get some more as soon as Bill's leg starts working again.");
+  
+                connection.end();
+         
+            } else {
+              connection.query(
+                "UPDATE inventory SET stock_quantity = stock_quantity - 1 WHERE item_ID = " + itemID,
+                console.log("Inventory updated!"),
+            
+                function(error) {
+                    if (error) throw err;
+              
+                    connection.end();
+                }
+              )
+            }
+      }
+      )
+    }
+    )
 }
-
 
 
 // // function which prompts the user for what action they should take
