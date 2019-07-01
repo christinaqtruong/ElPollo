@@ -62,12 +62,14 @@ function purchase() {
       connection.query(
         "SELECT stock_quantity FROM inventory WHERE item_id= " + answer.itemID,
         function(err, result) {
-          if (err) throw err;
-          console.log(err);
-          var quantity = answer.quantity;
-          var itemID = answer.itemID;
-          if (quantity > result){
-              console.log("Oh no! Looks like we're fresh out of those. We'll try to get some more as soon as Bill's leg starts working again.");
+            console.log(result);
+
+            if (err) throw err;
+            console.log(err);
+            var quantity = answer.quantity;
+            var itemID = answer.itemID;
+            if (quantity > result){
+            console.log("Oh no! Looks like we're fresh out of those. We'll try to get some more as soon as Bill's leg starts working again.");
 
               connection.end();
           } else {
