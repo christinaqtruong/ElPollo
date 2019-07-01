@@ -1,5 +1,5 @@
 # Trashy Trinkets
-So you found yourself at the end of the world. What do you do? You shop at Trashy Trinkets! The post-apocalytic store that has all your needs!
+So you found yourself at the end of the world. What do you do? You shop at Trashy Trinkets! The post-apocalytic store that has things you might find use for!
 
 ## Overview
 This app is an Amazon-like storefront using MySQL and Inquirer from Node.js. The app takes orders from customers and depletes stock from the store's inventory. 
