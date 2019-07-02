@@ -9,6 +9,7 @@ CREATE TABLE inventory(
   department_name VARCHAR(45) NOT NULL,
   price DEC (10,2) default 0,
   stock_quantity INT default 0,
+  product_sales DEC (10,0),
   PRIMARY KEY (item_id)
 );
 INSERT INTO inventory(product_name, department_name, price, stock_quantity)
@@ -28,3 +29,11 @@ VALUES("half-chewed gum", "consumables", 0.20, 20),
 ("dented coke can", "expired beverages", 9.99, 15);
 
 SELECT * FROM inventory;
+
+USE trashytrinkets_DB;
+
+CREATE TABLE departments(
+  department_id INT NOT NULL AUTO_INCREMENT,
+  department_name VARCHAR(100) NOT NULL,
+  overhead_costs DEC (10,2) default 5.00,
+  PRIMARY KEY (department_id));

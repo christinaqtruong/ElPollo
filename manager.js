@@ -78,7 +78,7 @@ function viewInventory() {
           if (err) throw err;
 
           if(results == []){
-            console.log("Looks like we're fully stocked. Better throw some ads out.")
+            console.log("Looks like we're fully stocked. Better send Bill to find grab customers.")
         } else {
         
             console.log(results);

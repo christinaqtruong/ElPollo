@@ -94,6 +94,8 @@ function purchase() {
                     connection.end();
                 }
               )
+
+              
             }
       }
       )
