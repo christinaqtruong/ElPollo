@@ -86,7 +86,7 @@ function viewInventory() {
         }
           start();
         }
-      );
+    );
 }
 
 //function that shows all items with inventory lower than 5
