@@ -59,10 +59,7 @@ function viewProducts() {
     
         function(err, results) {
           if (err) throw err;
-          console.log(err);
-
-          console.log(results);
-          console.log("\n **************************************************");
+          console.table(results);
 
           start();
         }
@@ -81,8 +78,7 @@ function viewInventory() {
             console.log("Looks like we're fully stocked. Better send Bill to find grab customers.")
         } else {
         
-            console.log(results);
-            console.log("\n **************************************************");
+            console.table(results);
         }
           start();
         }
@@ -111,7 +107,7 @@ function addInventory() {
         function(err) {
           if (err) throw err;
 
-          console.log("Inventory successfully updated! Better start looking for a peg for Bill.\n **************************************************");
+          console.log("Inventory successfully updated! Better start looking for a peg for Bill.");
 
           start();
         }
@@ -151,7 +147,7 @@ function addProduct() {
         function(err) {
           if (err) throw err;
 
-          console.log("Inventory successfully updated! Might want to add peg legs to the menu soon.\n **************************************************");
+          console.log("Inventory successfully updated! Might want to add peg legs to the menu soon.");
 
           start();
         }

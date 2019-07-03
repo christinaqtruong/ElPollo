@@ -33,7 +33,6 @@ function itemsForSale() {
     
         function(err, results) {
           if (err) throw err;
-          
 
           console.table(results);
 
@@ -67,7 +66,7 @@ function purchase() {
     
             var quantity = answer.quantity;
             var itemID = answer.itemID;
-            console.log(quantity);
+            
             if (quantity > result[0].stock_quantity){
               console.log("Oh no! Looks like we don't have enough in stock for your order. We'll try to get some more as soon as we can get Bill's tibia back in his leg.");
   
